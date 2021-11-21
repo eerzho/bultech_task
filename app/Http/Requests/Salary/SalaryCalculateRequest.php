@@ -53,7 +53,7 @@ class SalaryCalculateRequest extends BaseFromRequest
                 'required_if:is_invalid,true',
                 'integer',
                 'min:1',
-                'max:4'
+                'max:3'
             ],
 
         ];

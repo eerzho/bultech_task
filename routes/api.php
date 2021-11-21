@@ -19,5 +19,6 @@ Route::group(['prefix' => 'users'], function () {
 });
 
 Route::group(['prefix' => 'salaries'], function () {
+    Route::post('/', [\App\Http\Controllers\Api\Salary\SalaryController::class, 'store']);
     Route::get('/calculate', [\App\Http\Controllers\Api\Salary\SalaryController::class, 'calculate']);
 });

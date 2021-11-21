@@ -23,8 +23,10 @@ abstract class BaseResource extends JsonResource
         $fields = $this->getFields();
 
         $result = [];
-        foreach ($fields as $field) {
-            if ($this->$field instanceof DateTimeInterface) {
+        foreach ($fields as $key => $field) {
+            if (class_exists($field)) {
+                $result[$key] = new $field($this->$key);
+            } elseif ($this->$field instanceof DateTimeInterface) {
                 /** @var Carbon $date */
                 $date = $this->$field;
                 $result[$field] = $date->format(DateFormatHelper::DATETIME_FORMAT);
